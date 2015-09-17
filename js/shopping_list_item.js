@@ -1,4 +1,4 @@
-function ShoppingListItem(name, description, isDone) {
+function ShoppingListItem(name, description) {
 
 }
 
