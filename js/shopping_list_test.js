@@ -5,7 +5,7 @@ var newShoppingListItem;
 
 before(function() {
 
-  newShoppingListItem = new ShoppingListItem('buy milk', 'whole milk or bust');
+  newShoppingListItem = new ShoppingListItem('milk', 'whole milk or bust');
 
 });
 
@@ -27,7 +27,7 @@ describe('ShoppingListItem', function() {
 
   it('should have a constructor that accepts 2 arguments: name & description', function() {
 
-    newShoppingListItem.name.should.equal('buy milk');
+    newShoppingListItem.name.should.equal('milk');
     newShoppingListItem.description.should.equal('whole milk or bust');
 
   });
@@ -37,7 +37,6 @@ describe('ShoppingListItem', function() {
 //end ShoppingListItem property specs
 
 describe('.check', function() {
-
 
   it('should have a method named check', function() {
 
@@ -79,11 +78,11 @@ describe('.render', function() {
 
   });
 
-  it('calling render should construct and return an html formatted string with <li> element', function() {
+  it('calling render should construct and return an html formatted string with a <li> element and uncompleted task', function() {
 
     newShoppingListItem.render();
     newShoppingListItem.render().should.be.a('string');
-    expect(newShoppingListItem.render()).to.match(/<li/);
+    expect(newShoppingListItem.render()).to.match(/<li class="completed_false>/);
 
   });
 
@@ -95,11 +94,11 @@ describe('ShoppingList', function() {
 
   var newShoppingList;
 
-  // beforeEach(function () {
+  beforeEach(function () {
 
-  //   newShoppingList = new ShoppingList(items);
+    newShoppingList = new ShoppingList('milk', 'bread', 'apples');
 
-  // });
+  });
 
   it('should be a function', function() {
 
@@ -113,15 +112,66 @@ describe('ShoppingList', function() {
 
   });
 
-  it('should have a method named addItem', function() {
+});
 
-    newShoppingList.should.have.method('addItem');
+//end ShoppingList property specs
+
+describe('.addItem', function() {
+
+  var newShoppingList;
+  var notListItem;
+
+  beforeEach(function() {
+
+    notListItem = 'Bob';
+    newShoppingList = new ShoppingList();
+    newShoppingListItem1 = new ShoppingListItem('milk', 'whole milk or bust');
+    newShoppingListItem2 = new ShoppingListItem('apples', 'gala please');
+
+    //newShoppingList = new ShoppingList(newShoppingListItem1, newShoppingListItem2);
 
   });
 
   it('should have a method named addItem', function() {
 
-    newShoppingList.should.have.method('addItem');
+    expect(newShoppingList.addItem).to.be.a('function');
+
+  });
+
+  it('addItem should accept a single ShoppingListItem and add it to the array', function() {
+
+    newShoppingList.addItem(newShoppingListItem1);
+    expect(newShoppingList.items[0].name).to.deep.equal('milk');
+
+  });
+
+  it('should throw an error if item being entered is not a ShoppingListItem', function() {
+
+    expect(newShoppingList.addItem(notListItem)).to.throw(Error);
+
+  });
+
+});
+
+describe('.removeItem', function() {
+
+  var newShoppingList;
+  var notListItem;
+
+  beforeEach(function() {
+
+    notListItem = 'Bob';
+    newShoppingList = new ShoppingList();
+    newShoppingListItem1 = new ShoppingListItem('milk', 'whole milk or bust');
+    newShoppingListItem2 = new ShoppingListItem('apples', 'gala please');
+
+    newShoppingList = new ShoppingList(newShoppingListItem1, newShoppingListItem2);
+
+  });
+
+  it('should have a method named removeItem', function() {
+
+    expect(newShoppingList.removeItem).to.be.a('function');
 
   });
 
@@ -131,11 +181,9 @@ describe('ShoppingList', function() {
 
   });
 
-  it('should have a method named removeItem', function() {
+});
 
-    newShoppingList.should.have.method('removeItem');
-
-  });
+describe('.render', function() {
 
   it('should have a method named render', function() {
 
@@ -151,3 +199,4 @@ describe('ShoppingList', function() {
 
 });
 
+//end ShoppingList method specs

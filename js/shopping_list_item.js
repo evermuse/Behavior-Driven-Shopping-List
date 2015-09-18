@@ -20,7 +20,8 @@ ShoppingListItem.prototype.uncheck = function() {
 
 ShoppingListItem.prototype.render = function() {
 
-  return '<li class="completedIsDone"><span>[name]</span> <span>[description]</span></li>. example: <li class="completed_false"><span>name</span> <span>description</span></li>';
+  this.isDone = false;
+  return '<li class="completed_' + this.isDone + '><span>' + this.name + '</span><span>' + this.description + '</span></li>';
 
 };
 
