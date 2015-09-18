@@ -28,7 +28,7 @@ ShoppingList.prototype.removeItem = function(ItemToRemove) {
 
   } else if (ItemToRemove === undefined) {
 
-    items.pop();
+    this.items.pop();
 
   } else {
 
@@ -49,8 +49,6 @@ ShoppingList.prototype.render = function() {
   }
 
   fullList.join(',');
-
-  console.log(fullList);
 
   return '<ul>' + fullList + '</ul>';
 
