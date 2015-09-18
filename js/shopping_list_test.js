@@ -161,10 +161,8 @@ describe('.removeItem', function() {
   beforeEach(function() {
 
     notListItem = 'Bob';
-    newShoppingList = new ShoppingList();
     newShoppingListItem1 = new ShoppingListItem('milk', 'whole milk or bust');
     newShoppingListItem2 = new ShoppingListItem('apples', 'gala please');
-
     newShoppingList = new ShoppingList(newShoppingListItem1, newShoppingListItem2);
 
   });
@@ -177,23 +175,35 @@ describe('.removeItem', function() {
 
   it('should have a method named removeItem', function() {
 
-    newShoppingList.should.have.method('removeItem');
-
   });
 
 });
 
 describe('.render', function() {
 
+  var newShoppingList;
+
+  beforeEach(function() {
+
+    newShoppingListItem1 = new ShoppingListItem('milk', 'whole milk or bust');
+    newShoppingListItem2 = new ShoppingListItem('apples', 'gala please');
+    newShoppingList = new ShoppingList();
+    newShoppingList.addItem(newShoppingListItem1);
+    newShoppingList.addItem(newShoppingListItem2);
+    //console.log(newShoppingList);
+
+  });
+
   it('should have a method named render', function() {
 
-    newShoppingList.should.have.method('render');
+    expect(newShoppingList.render).to.be.a('function');
 
   });
 
   it('calling render should construct and return an html formatted string', function() {
 
-    newShoppingList.render.should.return.typeof('string'); // invoke
+    newShoppingList.render();
+    expect(newShoppingList.render()).to.be.a('string');
 
   });
 

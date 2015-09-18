@@ -6,9 +6,6 @@ function ShoppingList(items) {
 
 ShoppingList.prototype.addItem =  function(ListItem) {
 
-  console.log(ListItem);
-  console.log(ListItem instanceof ShoppingListItem);
-
   if (ListItem instanceof ShoppingListItem) {
 
     this.items.push(ListItem);
@@ -43,15 +40,17 @@ ShoppingList.prototype.removeItem = function(ItemToRemove) {
 
 ShoppingList.prototype.render = function() {
 
-  var fullList;
+  var fullList = [];
 
   for (var i = 0; i < this.items.length; i++) {
 
-    fullList = fullList.concat(ShoppingListItem.render(i));
+    fullList.push(this.items[i].render());
 
   }
 
   fullList.join(',');
+
+  console.log(fullList);
 
   return '<ul>' + fullList + '</ul>';
 
