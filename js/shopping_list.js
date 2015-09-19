@@ -40,6 +40,7 @@ ShoppingList.prototype.removeItem = function(ItemToRemove) {
 
 ShoppingList.prototype.render = function() {
 
+  //debugger;
   var fullList = [];
 
   for (var i = 0; i < this.items.length; i++) {
@@ -48,8 +49,6 @@ ShoppingList.prototype.render = function() {
 
   }
 
-  fullList.join(',');
-
-  return '<ul>' + fullList + '</ul>';
+  return '<ul>' + fullList.join('') + '</ul>';
 
 };

@@ -21,7 +21,7 @@ ShoppingListItem.prototype.uncheck = function() {
 ShoppingListItem.prototype.render = function() {
 
   this.isDone = false;
-  return '<li class="completed_' + this.isDone + '><span>' + this.name + '</span><span>' + this.description + '</span></li>';
+  return '<li class="completed_' + this.isDone + '"><span>' + this.name + '</span>&nbsp;-&nbsp;<span>' + this.description + '</span></li>';
 
 };
 

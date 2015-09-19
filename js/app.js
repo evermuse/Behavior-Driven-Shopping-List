@@ -1,25 +1,20 @@
-theShoppingList = new ShoppingList();
-itemsToDisplay = theShoppingList.render();
-document.querySelector('#output').innerHTML = ItemsToDisplay;
+var theShoppingList = new ShoppingList();
+var itemsToDisplay = theShoppingList.render();
+document.querySelector('#output').innerHTML = itemsToDisplay;
 
-document.querySelector('#add_shopping_list_item_button').addEventListener('click', add_to_shopping_list());
-
-submitLink.addEventListener('click', function() {
-
-  console.log('clickworked');
-
-});
+document.querySelector('#add_shopping_list_item_button').addEventListener('click', add_to_shopping_list);
 
 function add_to_shopping_list() {
 
-  document.querySelector('#newItem').value = newItemName;
-  document.querySelector('#newItemDescription').value = newItemDescription;
+  var newItemName = document.querySelector('#newItemName').value;
+  var newItemDescription = document.querySelector('#newItemDescription').value;
 
-  var new_shopping_list_item = ShoppingListItem(newItemName, newItemDescription);
+  var new_shopping_list_item = new ShoppingListItem(newItemName, newItemDescription);
 
-  theShoppingList.add(new_shopping_list_item);
+  theShoppingList.addItem(new_shopping_list_item);
 
-  itemsToDisplay;
+  console.log(theShoppingList.render());
+  document.querySelector('#output').innerHTML = theShoppingList.render();
 
 }
 
