@@ -1,3 +1,6 @@
-#content    {width: 300px; margin: 0 auto;}
+h1              {font-family: helvetica;}
 
-.button     {width: 50px; height: 20px;}
+#content        {width: 300px; margin: 0 auto;}
+
+.button         {width: 50px; height: 20px;}
+.deleteButton   {visibility: hidden;}

@@ -18,8 +18,22 @@ function add_to_shopping_list() {
 
 }
 
-function changeCheckedStatus() {
+var checkboxActivity = document.querySelectorAll('.checkbox');
 
+function changeCheckedStatus(idx, checkbox) {
+
+  var thisItem = theShoppingList.items[idx];
+  var isChecked = checkbox.checked;
+
+  var listElementClass = checkbox.parentElement;
+
+  if (isChecked) {
+    thisItem.check();
+    listElementClass.className = 'completed_true';
+  } else {
+    thisItem.uncheck();
+    listElementClass.className = 'completed_false';
+  }
 
 }
 
