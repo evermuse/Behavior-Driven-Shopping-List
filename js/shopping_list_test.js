@@ -145,7 +145,7 @@ describe('.addItem', function() {
 
   it('should throw an error if item being entered is not a ShoppingListItem', function() {
 
-    expect(newShoppingList.addItem(notListItem)).to.throw('ListItem is not an instanceof of ShoppingListItem');
+    expect(newShoppingList.addItem).to.throw(Error);
 
   });
 
@@ -179,7 +179,6 @@ describe('.removeItem', function() {
   });
 
   it('invoking .remove while undefined should remove the last item from the list', function() {
-console.log(newShoppingList.items);
 
     newShoppingList.removeItem();
 
@@ -190,7 +189,7 @@ console.log(newShoppingList.items);
 
   it('should throw an error if item being removed is not on the ShoppingList', function() {
 
-    expect(newShoppingList.removeItem(notListItem)).to.throw(Error);
+    expect(newShoppingList.removeItem).to.throw(Error);
 
   });
 
